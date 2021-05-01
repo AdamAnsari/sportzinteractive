@@ -2,13 +2,16 @@ var playerListArr = [];
 var playerListObj = {};
 
 const userAction = async () => {
+  // Send Request
   const response = await fetch('https://api.npoint.io/20c1afef1661881ddc9c');
+  // Receive Response
   const myJson = await response.json(); //extract JSON from the http response
   console.log(myJson);
   myJson.playerList.forEach((element) => {
     playerListObj = {
       Id: element.Id,
       PFName: element.PFName,
+      TName: element.TName,
       SkillDesc: element.SkillDesc,
       Value: element.Value,
       CCode: element.UpComingMatchesList[0].CCode,
@@ -19,9 +22,10 @@ const userAction = async () => {
     playerListObj = {}
   }); 
 
+  // Sorting Ascending for value
   this.playerListArr = this.playerListArr.sort((a, b) => (+a.Value < +b.Value ? -1 : 1));
 
-  console.log(playerListArr); 
+  // Call Card Function
   displayCard(playerListArr);
 }
 userAction();
@@ -63,7 +67,7 @@ const displayCard = (data) => {
 }
 
 const search = (value) => {
-  let newData =  playerListArr.filter(x => x.PFName.includes(value))
+  let newData =  playerListArr.filter(x => x.PFName.includes(value) || x.TName.includes(value))
 
   if(newData.length) {
     var main = document.getElementById("card-container");
