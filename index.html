@@ -14,14 +14,14 @@
 <body>
 
   <div class="input-group input-div">
-    <input class="form-control width100">
+    <input class="form-control width100" id="search">
     <span class="input-group-btn">
-      <button class="btn btn-info">Search</button>
+      <button class="btn btn-info"
+      onclick="search(document.getElementById('search').value)">Search</button>
     </span>
   </div>
 
-  <div class="container" id="card-container">
-  </div>
+  <div class="container" id="card-container"></div>
 
   <script src="index.js"></script>
 </body>

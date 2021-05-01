@@ -22,18 +22,16 @@ const userAction = async () => {
   this.playerListArr = this.playerListArr.sort((a, b) => (+a.Value < +b.Value ? -1 : 1));
 
   console.log(playerListArr); 
-  displayCard();
+  displayCard(playerListArr);
 }
 userAction();
 
-const displayCard = () => {
+const displayCard = (data) => {
   var main = document.getElementById("card-container");
   var div = [];
-  const red = "Lorem ipsum dolor, sit amet consectetur adipisicing elit";
-  playerListArr.forEach((element, i) => {
+  data.forEach((element, i) => {
     div.push(document.createElement("div"));
     div[i].setAttribute("class","card col-md-4 col-sm-4");
-    // div[i].setAttribute("style","width:18 rem;");
     const image = document.createElement("img");
     image.setAttribute("class","card-img-top");
     image.src = `assets/player-images/${element.Id}.jpg`;;
@@ -62,4 +60,21 @@ const displayCard = () => {
     div[i].appendChild(innerDiv);
     main.appendChild(div[i]);
   });
+}
+
+const search = (value) => {
+  let newData =  playerListArr.filter(x => x.PFName.includes(value))
+
+  if(newData.length) {
+    var main = document.getElementById("card-container");
+    main.innerHTML = "";
+    displayCard(newData);
+  } else {
+    alert('No Result Found. Try Again')
+    var main = document.getElementById("card-container");
+    var input = document.getElementById("search");
+    main.innerHTML = "";
+    input.value = "";
+    displayCard(playerListArr);
+  }
 }
