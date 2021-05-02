@@ -38,7 +38,7 @@ const displayCard = (data) => {
     div[i].setAttribute("class","card col-lg-4 col-md-4 col-sm-6");
     const image = document.createElement("img");
     image.setAttribute("class","card-img-top");
-    image.src = `assets/player-images/${element.Id}.jpg`;;
+    image.src = `player-images/${element.Id}.jpg`;;
     div[i].appendChild(image);
     var innerDiv = document.createElement("div");
     innerDiv.setAttribute("class","card-body");
