@@ -35,7 +35,7 @@ const displayCard = (data) => {
   var div = [];
   data.forEach((element, i) => {
     div.push(document.createElement("div"));
-    div[i].setAttribute("class","card col-md-4 col-sm-4");
+    div[i].setAttribute("class","card col-lg-4 col-md-4 col-sm-6");
     const image = document.createElement("img");
     image.setAttribute("class","card-img-top");
     image.src = `assets/player-images/${element.Id}.jpg`;;
