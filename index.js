@@ -43,23 +43,23 @@ const displayCard = (data) => {
     var innerDiv = document.createElement("div");
     innerDiv.setAttribute("class","card-body");
     var h3 = document.createElement("h3");
-    h3.textContent = (element.PFName !== '') ? `Name: ${element.PFName}` : 'Name: Not Provided';
+    h3.textContent = (element.PFName.length) ? `Name: ${element.PFName}` : 'Name: Not Provided';
     var h4 = document.createElement("h4");
     h4.setAttribute("class","card-text");
-    h4.textContent = (element.SkillDesc !== '') ? `Skill: ${element.SkillDesc}` : 'Skill: Not Provided';
+    h4.textContent = (element.SkillDesc.length) ? `Skill: ${element.SkillDesc}` : 'Skill: Not Provided';
     innerDiv.appendChild(h3);
     innerDiv.appendChild(h4);
     var h4 = document.createElement("h4");
     h4.setAttribute("class","card-text");
-    h4.textContent = (element.Value !== '') ? `Value: $${element.Value}` : 'Value: Not Provided';
+    h4.textContent = (element.Value.length) ? `Value: $${element.Value}` : 'Value: Not Provided';
     innerDiv.appendChild(h4);
     var h4 = document.createElement("h4");
     h4.setAttribute("class","card-text");
-    h4.textContent = (element.CCode !== '' || element.VsCCode !== '') ? `Upcoming Matches List: ${element.CCode} vs ${element.VsCCode}` : 'Upcoming Matches List: Not Provided';
+    h4.textContent = (element.CCode.length || element.VsCCode.length) ? `Upcoming Matches List: ${element.CCode} vs ${element.VsCCode}` : 'Upcoming Matches List: Not Provided';
     innerDiv.appendChild(h4);
     var p = document.createElement("p");
     p.setAttribute("class","card-text");
-    p.textContent = (element.MDate !== '') ? 'Date: ' + new Date(element.MDate + ' UTC').toString() : 'Date: Not Provided';
+    p.textContent = (element.MDate.length) ? 'Date: ' + new Date(element.MDate + ' UTC').toString() : 'Date: Not Provided';
     innerDiv.appendChild(p);
     div[i].appendChild(innerDiv);
     main.appendChild(div[i]);
@@ -74,7 +74,7 @@ const search = (value) => {
     main.innerHTML = "";
     displayCard(newData);
   } else {
-    alert('No Result Found. Try Again')
+    alert('No Result Found. Try Again');
     var main = document.getElementById("card-container");
     var input = document.getElementById("search");
     main.innerHTML = "";
